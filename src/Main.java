@@ -13,8 +13,9 @@ public class Main {
 		Math m = new Math(12, "asjas", "Matematika");
 		Economic e = new Economic(1, "asjas", "Ekonomi");
 		
-		int input;
-		try {
+		String [] listMenu = {"1","2","3","4","5","6","7","8","9","10","11","99"};
+		
+		String input;
 		for(int i = 0; ;i++) {
 			System.out.println("1. add teacher");
 			System.out.println("2. add student");
@@ -28,11 +29,20 @@ public class Main {
 			System.out.println("10. set interview");
 			System.out.println("11. set presentation");
 			System.out.println("99. Exit");
-			input = sc.nextInt();
-			sc.nextLine();
-			
-				switch (input) {
-					case 1:
+			input = sc.nextLine();
+			boolean falseInput = false;
+			for(int z = 0; z<listMenu.length; z++) {
+				if(input.equalsIgnoreCase(listMenu[z])) {
+					falseInput = false;
+					break;
+				}else {
+					falseInput = true;
+				}
+			}
+			if(!falseInput) {
+				try {
+					switch (input) {
+					case "1":
 						System.out.print("Masukkan nama Guru : ");
 						String name = sc.nextLine();
 						System.out.print("Masukkan NIK : ");
@@ -40,7 +50,7 @@ public class Main {
 						Teacher t = new Teacher(name, id);
 						teacherList.add(t);
 						break;
-					case 2:
+					case "2":
 						boolean emptyClass = false;
 						boolean emptyTeacher = false;
 						if(classList.size()==0) {
@@ -86,7 +96,7 @@ public class Main {
 							System.out.println("Tambahkan kelas dan guru terlebih dahulu");
 						}
 						break;
-					case 3:
+					case "3":
 						System.out.print("Masukan kode kelas : ");
 						String kode = sc.next();
 						System.out.print("Masukkan jenis kelas : ");
@@ -101,7 +111,7 @@ public class Main {
 						}
 						classList.add(new Class(kode, klas));
 						break;
-					case 4:
+					case "4":
 						System.out.println("SCIENCE");
 						for (int j = 0; j < scienceStudentList.size(); j++) {
 							System.out.println(scienceStudentList.get(j).getName());
@@ -116,13 +126,13 @@ public class Main {
 							System.out.println(socialStudentList.get(j).getGender());
 						}
 						break;
-					case 5:
+					case "5":
 						for(int x = 0; x<teacherList.size(); x++) {
 							System.out.println("NIK : "+teacherList.get(x).getId());
 							System.out.println("Nama Guru : "+teacherList.get(x).getName());
 						}
 						break;
-					case 6:
+					case "6":
 						for (int j = 0; j < classList.size(); j++) {
 							System.out.println("Kelas : "+classList.get(j).getClassName());
 							System.out.println("Jenis kelas : "+classList.get(j).getClassCourse());
@@ -147,7 +157,7 @@ public class Main {
 						}
 						break;
 						
-					case 7:
+					case "7":
 						System.out.print("Pilih class : ");
 						for (int j = 0; j < classList.size(); j++) {
 							System.out.println(j+". "+classList.get(j).getClassName());
@@ -177,7 +187,7 @@ public class Main {
 						}
 						sc.nextLine();
 						break;
-					case 8 :
+					case "8" :
 						for (int j = 0; j < scienceStudentList.size(); j++) {
 							scienceStudentList.get(j).setExam(true);
 						}
@@ -185,7 +195,7 @@ public class Main {
 							socialStudentList.get(j).setExam(true);
 						}
 						break;
-					case 9:
+					case "9":
 						for (int j = 0; j < scienceStudentList.size(); j++) {
 							scienceStudentList.get(j).setExercise(true);
 						}
@@ -193,7 +203,7 @@ public class Main {
 							socialStudentList.get(j).setExercise(true);;
 						}
 						break;
-					case 10:
+					case "10":
 						for (int j = 0; j < scienceStudentList.size(); j++) {
 							scienceStudentList.get(j).setPresentation(true);
 						}
@@ -201,7 +211,7 @@ public class Main {
 							socialStudentList.get(j).setPresentation(true);;
 						}
 						break;
-					case 11:
+					case "11":
 						for (int j = 0; j < scienceStudentList.size(); j++) {
 							scienceStudentList.get(j).setInterview(true);;
 						}
@@ -209,17 +219,19 @@ public class Main {
 							socialStudentList.get(j).setInterview(true);
 						}
 						break;
-					case 99:
+					case "99":
 						System.exit(1);
 						break;
 					default:
 						break;
 				}
+				}catch(Exception ex) {
+					System.out.println("Masukkan salah");
+				}
+			}else {
+				System.out.println("Masukkan salah");
+			}
 				
-		}
-		} catch (Exception ex) {
-			// TODO: handle exception
-			System.out.println("Masukan salah");
 		}
 	}
 
