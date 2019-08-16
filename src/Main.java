@@ -1,4 +1,3 @@
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +10,7 @@ public class Main {
 		ArrayList<ScientificStudent> scienceStudentList = new ArrayList<>();
 		ArrayList<SocialStudent> socialStudentList = new ArrayList<>();
 		ArrayList<Class> classList = new ArrayList<>();
-;		Math m = new Math(12, "asjas", "Matematika");
+		Math m = new Math(12, "asjas", "Matematika");
 		Economic e = new Economic(1, "asjas", "Ekonomi");
 		
 		int input;
@@ -75,9 +74,11 @@ public class Main {
 							sc.nextLine();
 							boolean science;
 							if(in2 == 1) {
+								m.setCourse("Matematika, fisika");
 								scienceStudentList.add(new ScientificStudent(name, id, gender, m));
 								
 							}else if(in2 == 2) {
+								e.setCourse("sosiologi, geografi");
 								socialStudentList.add(new SocialStudent(name, id, gender, e));
 							}
 							System.out.println();
@@ -126,11 +127,11 @@ public class Main {
 							System.out.println("Kelas : "+classList.get(j).getClassName());
 							System.out.println("Jenis kelas : "+classList.get(j).getClassCourse());
 							if(classList.get(j).getClassCourse().equalsIgnoreCase("science")) {
-								System.out.println("Kode Mata Pelajaran : "+scienceStudentList.get(0).getMath().getCourseCode());
-								System.out.println("Mata Pelajaran : "+scienceStudentList.get(0).getMath().getCourseName());
+								System.out.println("Jurusan : "+scienceStudentList.get(0).getMath().getCourseName());
+								System.out.println("Mata Pelajaran : "+m.getCourse());
 							}else {
-								System.out.println("Kode Mata Pelajaran : "+socialStudentList.get(0).getCourseCode());
-								System.out.println("Mata Pelajaran : "+socialStudentList.get(0).getCourseName());
+								System.out.println("Jurusan : "+socialStudentList.get(0).getCourseName());
+								System.out.println("Mata Pelajaran : "+e.getCourse());
 							}
 							if(classList.get(j).getTeacher()!=null) {
 								System.out.println("Pengajar : "+classList.get(j).getTeacher().getName());
@@ -219,7 +220,6 @@ public class Main {
 		} catch (Exception ex) {
 			// TODO: handle exception
 			System.out.println("Masukan salah");
-			ex.printStackTrace();
 		}
 	}
 
